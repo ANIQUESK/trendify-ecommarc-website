@@ -11,12 +11,19 @@ const ShopContextProvider = (props) => {
   const [token,setToken]= useState('');
   const navigate = useNavigate();
 const backendUrl =import.meta.env.VITE_BACKEND_URL
-  const currency = "$";
+  const currency = "₹";
   const delivery_fee = 10;
   const [products,setProducts]=useState([]);
+  
   useEffect(() => {
     // INFO: Load cart items from localStorage when the component mounts
-    const storedCartItems = JSON.parse(localStorage.getItem("cartItems"));
+    const cartItemsString = localStorage.getItem("cartItems");
+    
+    // Check if the retrieved string is valid (not null/empty and not the literal string "undefined")
+    const storedCartItems = (cartItemsString && cartItemsString !== "undefined")
+        ? JSON.parse(cartItemsString)
+        : null;
+
     if (storedCartItems) {
       setCartItems(storedCartItems);
     }

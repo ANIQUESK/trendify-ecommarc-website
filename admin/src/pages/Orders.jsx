@@ -96,7 +96,7 @@ const Orders = ({ token }) => {
             </div>
             <p className="text-sm sm-text-[15px]">
               {currency}
-              {order.amount} $
+              {order.amount} ₹
             </p>
             <select
   onChange={(event) => statusHandler(event, order._id)}
