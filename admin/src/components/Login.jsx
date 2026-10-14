@@ -29,40 +29,41 @@ const Login = ({ setToken }) => {
   };
 
   return (
-    <div className="flex items-center justify-center w-full min-h-screen">
-      <div className="max-w-md px-8 py-6 bg-white rounded-lg shadow-md">
-        <div className="mb-3 w-fit">
-          <img src={assets.logo} alt="Trendify" />
+    <div className="flex items-center justify-center w-full min-h-screen bg-[#f1f5f9] px-4">
+      <div className="w-full max-w-md p-8 bg-white rounded-xl border-2 border-slate-300 shadow-sm">
+        <div className="mb-4 flex justify-center">
+          <img className="h-10 w-auto object-contain" src={assets.logo} alt="Trendify" />
         </div>
-        <h1 className="mb-4 text-2xl font-bold">Admin Dashboard</h1>
-        <form onSubmit={onSubmitHandler}>
-          <div className="mb-3 min-w-72">
-            <p className="mb-2 text-sm font-medium text-gray-700">Email</p>
+        <h1 className="mb-1 text-xl font-bold text-center text-slate-800">Admin Dashboard</h1>
+        <p className="mb-6 text-xs text-center text-slate-500">Sign in with your admin credentials to manage Trendify</p>
+        <form onSubmit={onSubmitHandler} className="space-y-4">
+          <div>
+            <label className="block mb-1.5 text-xs font-bold text-slate-700">Admin Email</label>
             <input
               onChange={(e) => setEmail(e.target.value)}
               value={email}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none"
+              className="w-full px-3.5 py-2.5 text-sm border-2 border-slate-400 rounded-lg text-slate-800 placeholder-slate-400 focus:outline-none focus:border-slate-800 bg-white"
               type="email"
-              placeholder="your@email.com"
+              placeholder="admin@gmail.com"
               required
             />
           </div>
           <div>
-            <p className="mb-2 text-sm font-medium text-gray-700">Password</p>
+            <label className="block mb-1.5 text-xs font-bold text-slate-700">Password</label>
             <input
               onChange={(e) => setPassword(e.target.value)}
               value={password}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none"
+              className="w-full px-3.5 py-2.5 text-sm border-2 border-slate-400 rounded-lg text-slate-800 placeholder-slate-400 focus:outline-none focus:border-slate-800 bg-white"
               type="password"
-              placeholder="Enter your password"
+              placeholder="••••••••"
               required
             />
           </div>
           <button
-            className="w-full px-4 py-2 mt-5 text-white bg-black rounded-md"
+            className="w-full py-2.5 mt-2 text-sm font-semibold text-white bg-[#233142] hover:bg-[#16202c] active:scale-95 rounded-lg transition-all duration-150 shadow-sm cursor-pointer"
             type="submit"
           >
-            Login
+            Sign In to Dashboard
           </button>
         </form>
       </div>

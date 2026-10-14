@@ -1,22 +1,43 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-  font-family: Outfit;
+  font-family: "Outfit", sans-serif;
+  box-sizing: border-box;
 }
 
-select, input, textarea{
-  border: 2px solid #c2c2c2;
-  outline-color: rgb(49, 51, 51);
+body {
+  background-color: #f8fafc;
+  color: #1e293b;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom form styles matching reference UI */
+input, select, textarea {
+  border: 1.5px solid #94a3b8;
   border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
-.active {
-  background-color: #ade5ff67;
-  border-color: #1d1c1c;
-  border-width: 2px;
-  border-right: 0;
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #1e293b;
+  box-shadow: 0 0 0 1px #1e293b;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }

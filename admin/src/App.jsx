@@ -24,10 +24,10 @@ const App = () => {
   }, [token]);
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-[#f8fafc] flex flex-col">
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -36,23 +36,22 @@ const App = () => {
         draggable
         pauseOnHover
         theme="colored"
-        transition:Slide
       />
       {token === "" ? (
         <Login setToken={setToken} />
       ) : (
         <>
           <Navbar setToken={setToken} />
-          <hr />
-          <div className="flex w-full">
+          <div className="flex flex-1 w-full">
             <Sidebar />
-            <div className="w-[70%] mx-auto ml-[max(5vw,25px)] my-8 text-gray-600 text-base">
+            <main className="flex-1 px-6 sm:px-10 py-6 sm:py-8 overflow-x-hidden">
               <Routes>
+                <Route path="/" element={<Add token={token} />} />
                 <Route path="/add" element={<Add token={token} />} />
                 <Route path="/list" element={<List token={token} />} />
                 <Route path="/orders" element={<Orders token={token} />} />
               </Routes>
-            </div>
+            </main>
           </div>
         </>
       )}

@@ -4,37 +4,53 @@ import { assets } from "../assets/assets";
 
 const Sidebar = () => {
   return (
-    <div className="w-[18%] min-h-screen border-r-2">
-      <div className="flex flex-col gap-4 pt-6 pl-[20%] text-[15px]">
+    <aside className="w-64 min-h-[calc(100vh-64px)] bg-[#edf2f7] border-r border-slate-300 p-5 shrink-0">
+      <div className="flex flex-col gap-3">
         <NavLink
-          className={
-            "flex items-center gap-3 border border-gray-500 border-r-0 px-3 py-2 rounded-lg bg-gray-200"
+          to="/add"
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-150 ${
+              isActive
+                ? "bg-[#d7ecf8] text-[#0f172a] border-2 border-slate-800 shadow-sm"
+                : "bg-white/90 text-slate-700 border-2 border-slate-400 hover:bg-white"
+            }`
           }
-          to={"/add"}
         >
-          <img className="w-6 h-6" src={assets.add_icon} alt="Add Items" />
-          <p className="hidden text-lg font-semibold md:block">Add Items</p>
+          <div className="w-5 h-5 flex items-center justify-center rounded-full border border-current text-xs font-bold leading-none">
+            +
+          </div>
+          <span>Add Items</span>
         </NavLink>
+
         <NavLink
-          className={
-            "flex items-center gap-3 border border-gray-500 border-r-0 px-3 py-2 rounded-lg bg-gray-200"
+          to="/list"
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-150 ${
+              isActive
+                ? "bg-[#d7ecf8] text-[#0f172a] border-2 border-slate-800 shadow-sm"
+                : "bg-white/90 text-slate-700 border-2 border-slate-400 hover:bg-white"
+            }`
           }
-          to={"/list"}
         >
-          <img className="w-6 h-6" src={assets.parcel_icon} alt="List Items" />
-          <p className="hidden text-lg font-semibold md:block">List Items</p>
+          <img className="w-5 h-5 object-contain" src={assets.parcel_icon} alt="List Items" />
+          <span>List Items</span>
         </NavLink>
+
         <NavLink
-          className={
-            "flex items-center gap-3 border border-gray-500 border-r-0 px-3 py-2 rounded-lg bg-gray-200"
+          to="/orders"
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-150 ${
+              isActive
+                ? "bg-[#d7ecf8] text-[#0f172a] border-2 border-slate-800 shadow-sm"
+                : "bg-white/90 text-slate-700 border-2 border-slate-400 hover:bg-white"
+            }`
           }
-          to={"/orders"}
         >
-          <img className="w-6 h-6" src={assets.order_icon} alt="Add Products" />
-          <p className="hidden text-lg font-semibold md:block">View Orders</p>
+          <img className="w-5 h-5 object-contain" src={assets.order_icon} alt="View Orders" />
+          <span>View Orders</span>
         </NavLink>
       </div>
-    </div>
+    </aside>
   );
 };
 

@@ -4,19 +4,19 @@ import { Link } from "react-router-dom";
 
 const Navbar = ({ setToken }) => {
   return (
-    <div className="top-0 left-0 z-50 w-full transition-all duration-300 bg-gray-600 bg-opacity-50 shadow-lg backdrop-blur-md">
-      <div className="flex items-center py-2 px-[4%] justify-between">
-        <Link to={"/"}>
-          <img className="w-44" src={assets.logo} alt="Trendify" />
+    <header className="sticky top-0 z-50 w-full bg-[#8e9ca8] shadow-sm">
+      <div className="flex items-center justify-between px-6 sm:px-10 py-3 max-w-[1600px] mx-auto">
+        <Link to="/" className="flex items-center gap-2">
+          <img className="h-9 sm:h-10 w-auto object-contain" src={assets.logo} alt="Trendify" />
         </Link>
         <button
           onClick={() => setToken("")}
-          className="px-5 py-2 text-xs text-white bg-gray-800 rounded-full sm:px-7 sm:text-sm"
+          className="px-6 py-1.5 text-xs sm:text-sm font-medium text-white bg-[#1a2332] hover:bg-[#0f172a] rounded-full transition-all duration-200 shadow-sm"
         >
           Logout
         </button>
       </div>
-    </div>
+    </header>
   );
 };
 
