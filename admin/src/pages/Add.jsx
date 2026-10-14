@@ -3,7 +3,7 @@ import axios from "axios";
 import { backendUrl } from "../App";
 import { toast } from "react-toastify";
 
-const Add = ({ token }) => {
+const Add = ({ token, setToken }) => {
   const [image1, setImage1] = useState(null);
   const [image2, setImage2] = useState(null);
   const [image3, setImage3] = useState(null);
@@ -55,7 +55,12 @@ const Add = ({ token }) => {
       }
     } catch (error) {
       console.error(error);
-      toast.error(error.response?.data?.message || "Failed to add product");
+      if (error.response?.status === 401 && setToken) {
+        toast.error("Session expired, please login again");
+        setToken("");
+      } else {
+        toast.error(error.response?.data?.message || "Failed to add product");
+      }
     } finally {
       setLoading(false);
     }

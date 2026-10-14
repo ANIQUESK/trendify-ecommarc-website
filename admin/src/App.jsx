@@ -9,7 +9,7 @@ import Login from "./components/Login";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const backendUrl = import.meta.env.VITE_BACKEND_URL;
+export const backendUrl = (import.meta.env.VITE_BACKEND_URL || "http://localhost:4000").replace(/\/$/, "");
 
 export const currency = (price) => {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(price);
@@ -46,10 +46,10 @@ const App = () => {
             <Sidebar />
             <main className="flex-1 px-6 sm:px-10 py-6 sm:py-8 overflow-x-hidden">
               <Routes>
-                <Route path="/" element={<Add token={token} />} />
-                <Route path="/add" element={<Add token={token} />} />
-                <Route path="/list" element={<List token={token} />} />
-                <Route path="/orders" element={<Orders token={token} />} />
+                <Route path="/" element={<Add token={token} setToken={setToken} />} />
+                <Route path="/add" element={<Add token={token} setToken={setToken} />} />
+                <Route path="/list" element={<List token={token} setToken={setToken} />} />
+                <Route path="/orders" element={<Orders token={token} setToken={setToken} />} />
               </Routes>
             </main>
           </div>

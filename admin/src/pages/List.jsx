@@ -3,7 +3,7 @@ import axios from "axios";
 import { backendUrl, currency } from "../App";
 import { toast } from "react-toastify";
 
-const List = ({ token }) => {
+const List = ({ token, setToken }) => {
   const [listProducts, setListProducts] = useState([]);
 
   const fetchListProducts = async () => {
@@ -17,7 +17,7 @@ const List = ({ token }) => {
       }
     } catch (error) {
       console.error(error);
-      toast.error(response.data.message);
+      toast.error(error.response?.data?.message || error.message || "Failed to load products");
     }
   };
 
@@ -37,7 +37,12 @@ const List = ({ token }) => {
       }
     } catch (error) {
       console.error(error);
-      toast.error(response.data.message);
+      if (error.response?.status === 401 && setToken) {
+        toast.error("Session expired, please login again");
+        setToken("");
+      } else {
+        toast.error(error.response?.data?.message || error.message);
+      }
     }
   };
 

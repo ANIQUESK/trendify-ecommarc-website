@@ -9,8 +9,8 @@ const Login = ({ setToken }) => {
   const [password, setPassword] = useState("");
 
   const onSubmitHandler = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
       const response = await axios.post(backendUrl + "/api/user/admin", {
         email,
         password,
@@ -20,11 +20,16 @@ const Login = ({ setToken }) => {
         setToken(response.data.token);
         toast.success("Login successful.");
       } else {
-        toast.error(response.data.message);
+        toast.error(response.data.message || "Invalid credentials");
       }
     } catch (error) {
       console.error(error);
-      toast.error("Please try again later.");
+      const msg =
+        error.response?.data?.message ||
+        (error.code === "ERR_NETWORK"
+          ? "Cannot connect to server. Please ensure backend is running on port 4000."
+          : error.message);
+      toast.error(msg);
     }
   };
 

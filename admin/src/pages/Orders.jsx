@@ -4,7 +4,7 @@ import { backendUrl, currency } from '../App'
 import { toast } from 'react-toastify'
 import { assets } from '../assets/assets'
 
-const Orders = ({ token }) => {
+const Orders = ({ token, setToken }) => {
   const [orders, setOrders] = useState([])
 
   const fetchAllOrders = async () => {
@@ -23,7 +23,12 @@ const Orders = ({ token }) => {
         toast.error(response.data.message)
       }
     } catch (error) {
-      toast.error(error.message)
+      if (error.response?.status === 401 && setToken) {
+        toast.error("Session expired, please login again");
+        setToken("");
+      } else {
+        toast.error(error.response?.data?.message || error.message);
+      }
     }
   }
   const statusHandler = async (event, orderId) => {
